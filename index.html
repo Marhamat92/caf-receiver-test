@@ -12,15 +12,7 @@
         const context = cast.framework.CastReceiverContext.getInstance();
         context.canDisplayType('audio/mp4', 'mp4a.40.5');  //returns true
 
-        // Create a CastMessageBus to listen for messages from the sender
-        const messageBus = context.getCastMessageBus('urn:x-cast:com.google.cast.test');
-
-        // Listen and log all incoming messages
-        messageBus.onMessage = function (event) {
-            console.log('Message [' + event.senderId + ']: ' + event.data);
-            // Echo the message back
-            messageBus.send(event.senderId, event.data);
-        };
+        BitmovinCastManager.initialize("FFE417E5", "urn:x-cast:com.bitmovin.player.caf")
 
         const CafReceiver = new BitmovinCafReceiver();
         CafReceiver.init();
