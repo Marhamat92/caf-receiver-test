@@ -12,9 +12,7 @@
         const context = cast.framework.CastReceiverContext.getInstance();
         context.canDisplayType('audio/mp4', 'mp4a.40.5');  //returns true
 
-        context.initialize("8E616D2C", "urn:x-cast:caf-receiver-test.vercel.app");
 
-        context.start();
 
 
 
@@ -22,7 +20,9 @@
 
         const CafReceiver = new BitmovinCafReceiver();
         CafReceiver.init(
-
+            context,
+            "8E616D2C",
+            "urn:x-cast:https://caf-receiver-test.vercel.app"
         );
 
     </script>
