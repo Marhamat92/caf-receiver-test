@@ -12,7 +12,7 @@
         const context = cast.framework.CastReceiverContext.getInstance();
         context.canDisplayType('audio/mp4', 'mp4a.40.5');  //returns true
 
-        BitmovinCastManager.initialize("FFE417E5", "urn:x-cast:com.bitmovin.player.caf")
+        context.initialize("FFE417E5", "urn:x-cast:com.bitmovin.player.caf")
 
         const CafReceiver = new BitmovinCafReceiver();
         CafReceiver.init();
