@@ -1,2 +1,31 @@
-<html><head><title>Bitmovin CAF receiver</title><script src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"></script><script src="BitmovinCafReceiver.js?8d0daf430be8055c219d"></script></head><body><cast-media-player></cast-media-player><script>const CafReceiver = new BitmovinCafReceiver();
-    CafReceiver.init();</script></body></html>
+<html>
+
+<head>
+    <title>Bitmovin CAF receiver</title>
+    <script src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"></script>
+    <script src="BitmovinCafReceiver.js?8d0daf430be8055c219d"></script>
+</head>
+
+<body><cast-media-player></cast-media-player>
+    <script>
+
+        const context = cast.framework.CastReceiverContext.getInstance();
+        context.canDisplayType('audio/mp4', 'mp4a.40.5');  //returns true
+
+        // Create a CastMessageBus to listen for messages from the sender
+        const messageBus = context.getCastMessageBus('urn:x-cast:com.google.cast.test');
+
+        // Listen and log all incoming messages
+        messageBus.onMessage = function (event) {
+            console.log('Message [' + event.senderId + ']: ' + event.data);
+            // Echo the message back
+            messageBus.send(event.senderId, event.data);
+        };
+
+        const CafReceiver = new BitmovinCafReceiver();
+        CafReceiver.init();
+
+    </script>
+</body>
+
+</html>
