@@ -12,10 +12,12 @@
         const context = cast.framework.CastReceiverContext.getInstance();
         context.canDisplayType('audio/mp4', 'mp4a.40.5');  //returns true
 
-        context.initialize("FFE417E5", "urn:x-cast:https://caf-receiver-test.vercel.app")
+        // context.initialize("FFE417E5", "urn:x-cast:https://caf-receiver-test.vercel.app")
 
         const CafReceiver = new BitmovinCafReceiver();
-        CafReceiver.init();
+        CafReceiver.init(
+
+        );
 
     </script>
 </body>
